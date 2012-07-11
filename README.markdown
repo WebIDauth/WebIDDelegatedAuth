@@ -104,7 +104,6 @@ On instantiation, it performs the following operations:
 3.  If authentication is successful, it loads the corresponding foaf file
 
         $auth = new Authentication($config) // $config is optional,  
-                                            // only necessary if ARC is used
 
 On Success:
 
@@ -127,7 +126,7 @@ _Authentication\_Session_. It stores the authenticated webid and the parsed foaf
 file in `$_SESSION`. This results in a significant speed up in successive 
 authentication attempts. If you want to create it manually, you can do that as follows:
 
-    $authSession = new Authentication_Session( 1, $webid)
+    $authSession = new Authentication_Session(1, $webid)
 
 where 1 indicates the fact of successful authentication and `$webid` is a URI string.
 
