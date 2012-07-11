@@ -20,7 +20,7 @@ The core classes of _WebIDDelegatedAuth_ are tackled in section 3. and 4.
 
 There are a few flavours of WebID authentication. The following very simple
 example shows how to setup a WebID authentication relying on an identity 
-provider such as foaf-ssl.org.
+provider such as foafssl.org.
 
 Prerequisites:
 
@@ -101,7 +101,7 @@ On instantiation, it performs the following operations:
 
 1.  Checks if an authentication session cookie is present
 2.  If 1. fails, it tries to authenticate via delegated WebID (see _Authentication\_Delegate_)
-3.  If authentication is successful, it loads the corresponding foaf file
+3.  If authentication is successful, it loads the corresponding WebID URI
 
         $auth = new Authentication($config) // $config is optional 
 
