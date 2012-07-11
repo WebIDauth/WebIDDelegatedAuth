@@ -1,8 +1,7 @@
 Source: libwebiddelegatedauth-php
 Section: php
 Priority: optional
-Maintainer: Olivier Berger <obergix@debian.org>
-Uploaders: Olivier Berger <olivier.berger@telecom-sudparis.eu>
+Maintainer: Olivier Berger <olivier.berger@telecom-sudparis.eu>
 Build-Depends: debhelper (>= 8)
 Standards-Version: 3.9.3
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=users/obergix/libgraphite-php.git;a=summary
@@ -18,7 +17,7 @@ Description: php Library to enable delegated WebID authentication
  Whereas libAuthentication is a more general purpose PHP support 
  library for the WebID protocol, WebIDDelegatedAuth can only be 
  used to allow Web applications to support WebID authentication 
- by delegating WebID authentication to their prefered third party 
+ by delegating WebID authentication to their preferred third party 
  WebID identification provider.
 
 
