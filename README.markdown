@@ -35,7 +35,7 @@ Checkout and create a script that will be the entry point for your application:
     <?php
 
     require_once('WebIDDelegatedAuth/lib/Authentication.php');
-    $auth = new Authentication_Delegate();
+    $auth = new Authentication_Delegated();
 
     if (!$auth->isAuthenticated()) 
     { 
@@ -157,7 +157,7 @@ _Authentication\_Session_ will also be created, to speed up further authenticati
 attempts. If that something you don't want to happend, you need to call the constructor 
 as follows:
 
-    $auth = new Authentication_Delegate( false );
+    $auth = new Authentication_Delegated( false );
 
 On Error:
 
