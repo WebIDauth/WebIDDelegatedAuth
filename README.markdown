@@ -103,7 +103,7 @@ On instantiation, it performs the following operations:
 2.  If 1. fails, it tries to authenticate via delegated WebID (see _Authentication\_Delegate_)
 3.  If authentication is successful, it loads the corresponding foaf file
 
-        $auth = new Authentication($config) // $config is optional,  
+        $auth = new Authentication($config) // $config is optional 
 
 On Success:
 
