@@ -1,12 +1,14 @@
 1. Introduction
 ===============
 
-_WebIDDelegatedAuth_ is a lite version of _libAuthentication_ (<https://github.com/melvincarvalho/libAuthentication>), 
-which is a PHP implementation of the WebID protocol. _WebIDDelegatedAuth_ is only 
-used for delegated WebID authentication. All credit belongs to the initial authors 
-of _libAuthentication_.
+_WebIDDelegatedAuth_ is a scaled down version of _libAuthentication_ 
+(<https://github.com/melvincarvalho/libAuthentication>).
+Whereas libAuthentication is a more general purpose PHP support library for the WebID protocol, 
+_WebIDDelegatedAuth_ can only be used to allow Web applications to support WebID authentication by delegating 
+WebID authentication to their prefered third part WebID identification provider. 
+All credit belongs to the initial authors of _libAuthentication_.
 
-Further details of WebID can be obtained at <http://webid.info>
+Further details of the WebID protocol can be obtained at <http://webid.info>
 
 If you would like to learn how to get going quickly without diving to much into
 technical details, then read section 2. and 3.
@@ -15,12 +17,12 @@ The core classes of _WebIDDelegatedAuth_ are tackled in section 3. and 4.
 
 --------------------------------------------------------------------------------
 
-2. How to set up WebID authentication in a few lines of code
+2. How to set up "delegated" WebID authentication in a few lines of code
 ================================================================================
 
 There are a few flavours of WebID authentication. The following very simple
-example shows how to setup a WebID authentication relying on an identity 
-provider such as foafssl.org.
+example shows how to setup a WebID authentication relying on a third party identity 
+provider such as foafssl.org or auth.my-profile.eu.
 
 Prerequisites:
 
@@ -29,7 +31,7 @@ Prerequisites:
 
 Checkout and create a script that will be the entry point for your application:
 
-    git clone git://github.com/melvincarvalho/libAuthentication.git
+    git clone https://github.com/WebIDauth/WebIDDelegatedAuth.git
 
     cat > index.php
     <?php
@@ -48,16 +50,16 @@ Checkout and create a script that will be the entry point for your application:
       print_r($auth);
     } 
 
-Make sure the _"authreqissuer"_ points to YOUR site and...
+Make sure the _"authreqissuer"_ points to YOUR site (to reinvoke the same index.php) and...
 ... YOU ARE DONE!
 
 You just set up you first WebID powered site. Behind the scenes,
-_WebIDDelegatedAuth_ has a copy of foafssl.org's certificate which is used
+_WebIDDelegatedAuth_ has an embedded copy of foafssl.org's certificate (in its code) which is used
 in the authentication process.
 
 
 Note that if you wish to use another delegated identity verification
-service (for instance 'auth.my-profile.eu'), you maye need to change line 4 as :
+service (for instance 'auth.my-profile.eu'), you may need to change line 4 as :
 
     $auth = new Authentication_Delegate(TRUE, NULL, Authentication_URL::parse('https://auth.my-profile.eu'));
 
@@ -66,7 +68,9 @@ Then you'd change the login link to :
     echo '<a href="https://auth.my-profile.eu/auth/?authreqissuer=http://localhost/index.php">Click here to Login</a>';
 
 This will ensure that you wish to verify the server's response
-signature according to the proper certificate already present in Authentication_X509CertRepo.php
+signature according to the proper certificate, which is also already present in Authentication_X509CertRepo.php
+
+Should you want to host your own WebID identity provider (like foafssl.org or auth.my-profile.net), you may check a PHP implementation at https://github.com/WebIDauth/WebIDauth (which is the software used to operate auth.my-profile.net). 
 
 --------------------------------------------------------------------------------
 
@@ -79,7 +83,7 @@ _WebIDDelegatedAuth_ provides the following core classes:
     Authenticate user by trying the supported authentication methods in a fixed 
     and reasonable sequence
 
-*   Authentication_Delegate
+*   Authentication_Delegated
     Authenticate via the delegated WebID method using a 3rd party WebID 
     identity provider (foafssl.org and auth.my-profile.eu supported by default)
 
@@ -130,7 +134,7 @@ authentication attempts. If you want to create it manually, you can do that as f
 
 where 1 indicates the fact of successful authentication and `$webid` is a URI string.
 
-class Authentication_Delegate
+class Authentication_Delegated
 --------------------------------------------------------------------------------
 
 Using the delegated WebID method is probably the easiest way to get you start 
@@ -139,10 +143,10 @@ to set up. Refer to Section 2. for an example and make sure you set up the examp
 using a public domain name or a public IP address. I you want find out more details 
 how the identity provider works, see <https://foafssl.org/srv/idp>.
 
-You need to instantiate _Authentication\_Delegate_ at a common entry point 
+You need to instantiate _Authentication\_Delegated_ at a common entry point 
 to your site (e.g. index.php):
 
-    $auth = new Authentication_Delegate();
+    $auth = new Authentication_Delegated();
 
 Most of the input is automatically retrieved from the global php context variables 
 (`$_REQUEST`, `$_SERVER` etc.), so using the default constructor parameters is fine. 
