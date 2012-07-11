@@ -18,8 +18,8 @@ The core classes of _WebIDDelegatedAuth_ are tackled in section 3. and 4.
 2. How to set up WebID authentication in a few lines of code
 ================================================================================
 
-There are a few flavours of Foaf+SSL authentication. The following very simple
-example shows how to setup a Foaf+SSL authentication relying on an identity 
+There are a few flavours of WebID authentication. The following very simple
+example shows how to setup a WebID authentication relying on an identity 
 provider such as foaf-ssl.org.
 
 Prerequisites:
@@ -51,7 +51,7 @@ Checkout and create a script that will be the entry point for your application:
 Make sure the _"authreqissuer"_ points to YOUR site and...
 ... YOU ARE DONE!
 
-You just set up you first Foaf+SSL powered site. Behind the scenes,
+You just set up you first WebID powered site. Behind the scenes,
 _WebIDDelegatedAuth_ has a copy of foafssl.org's certificate which is used
 in the authentication process.
 
