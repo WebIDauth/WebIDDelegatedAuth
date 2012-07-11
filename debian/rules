@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+get-orig-source:
+	wget https://github.com/WebIDauth/WebIDDelegatedAuth/tarball/master
+	mv master ../libwebiddelegatedauth-php_0.1.orig.tar.gz
