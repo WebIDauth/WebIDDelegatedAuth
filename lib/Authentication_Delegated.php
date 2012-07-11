@@ -2,7 +2,7 @@
 
 /*-------------------------------------------------------------------------------------
  *
- * Filename   : Authentication_Delegate.php
+ * Filename   : Authentication_Delegated.php
  * Date       : 11th July 2012
  *
  * Copyright (C) 2012 Melvin Carvalho, Akbar Hossain, László Török
@@ -37,7 +37,7 @@ require_once(dirname(__FILE__)."/Authentication_Session.php");
  * @author Akbar Hossain
  * @modified Andrei Sambra
  */
-class Authentication_Delegate {
+class Authentication_Delegated {
     /**
      * After succesful authentication contains the webid
      * (e.g. http://foaf.me/tl73#me)

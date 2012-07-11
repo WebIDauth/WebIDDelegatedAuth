@@ -29,7 +29,7 @@
  */
 //-------------------------------------------------------------------------------------
 
-require_once(dirname(__FILE__)."/Authentication_Delegate.php");
+require_once(dirname(__FILE__)."/Authentication_Delegated.php");
 
 /**
  * Top-level authentication class that integrates multiple authentication
@@ -64,7 +64,7 @@ class Authentication {
         $sig = isset($sig)?$sig:$_GET["sig"];
         if (isset($sig))
         {
-            $authDelegate = new Authentication_Delegate(FALSE);
+            $authDelegate = new Authentication_Delegated(FALSE);
 
             $this->webid           = $authDelegate->webid;
             $this->isAuthenticated = $authDelegate->isAuthenticated;
